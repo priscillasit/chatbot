@@ -4,6 +4,9 @@
 
 # WILD - Developing a Chatbot
 
+As Business Analytics students from The George Washington University, our project involves building a chatbot and text analytics model for our client, the World Wildlife Fund.  
+Team members: Pedro Chames Carvalho, Ke Chai, Varsha Katam, Hao Ren, Priscilla Sit, Alejandra Taboada 
+
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
@@ -35,7 +38,12 @@ The dataset of customer inquiries was provided by the World Wildlife Fund in a f
 Data Cleaning: We used Python to clean the data, ensuring it was consistent, relevant, and error-free. The cleaning process removed irrelevant data (such as greetings and thank-you messages), standardized data by changing capitalization and punctuation, and removed noise (such as stop words, special characters, and HTML). We used 're' and 'nltk' packages for data cleaning.  
 
 **2. Topic Extraction:**   
-After cleaning the data, we used SAS Enterprise Miner to identify the top 25 topics in the dataset. These topics formed the basis for developing the interactive chatbot platform. We are continuously refining the topic extraction process to improve the quality of the topics identified. The top five significant areas we identified include "Cancel monthly donation," "Asking about order status," "Cancel membership payment," "Monthly payment status," and "Remove customer from mailing list."  
+After cleaning the data, we used SAS Enterprise Miner to identify the top 25 topics in the dataset. These topics formed the basis for developing the interactive chatbot platform. We are continuously refining the topic extraction process to improve the quality of the topics identified. The top five significant areas we identified include   
+1. Cancel monthly donation 
+2. Order status
+3. Cancel membership payment
+4. Monthly payment status
+5. Remove from mailing list  
 
 **3. Data Pre-processing:**  
 We pre-processed the data by tokenizing sentences into individual words, performing lemmatization, and removing stop words. This transformed the raw text data into a more structured format suitable for analysis.
@@ -163,9 +171,13 @@ To start the interactive chatbot, simply run $ npm start. This will open the dev
    
 | Key Words        | Example Prompts from WWF Dataset           | Group  |
 | ------------- |:-------------:| -----:|
-| (cancel AND (membership OR donat(ion/ing))) OR refund      | I thought I was making a donation to the Canadian Wildlife Fund. I was not impressed to find out I was paying in US funds. IF there is a way to cancel this I would be happy. Otherwise I will be more careful next time | Refund |
+| (refund AND (membership OR donat(ion/ing)))      | Recently cancelled monthly donation and asked for a refund however havent yet received money back | Refund |
 | ((change OR update) AND (mail OR address OR name))   | I am trying to donate online. My name has recently changed from Lewis to Maloney. My email address has remained the same but the website won't accept this as a valid email address even though I received my donation request through that email address     |   Change Personal Information | 
 | (donation OR adopt) |  Good morning, I've made a donation a few days ago, I would like to know which carrier do you guys use so I can check with the people from the receiving department since I got it ship to my job. Thanks | Donation Question
+| (update OR remove OR (take AND off)) AND mail | Hi. We very much appreciate the work you're doing, and we do donate. Would you please take us off the paper mailing list in order to save paper | Change Solicitation Preferences  | 
+| cancel AND (subscription OR membership or donation)  | Hi, I need to cancel my membership at this time. I am currently donating $15/month.Please advise me when this is done  | Sustainer Request  |
+| renew  | I sent a membership renewal on the 17th, the wwf website hungup at the end of transaction. I am not sure if it went through. Can you help?  | Renewal Issue  |
+| (receive OR send OR forward) AND (mail OR receipt OR invoice OR order)  | Please forward a copy of invoice with mailing address to wjmacneill@gmail.  | Mailed Info |
 
 ## Recommended Next Steps
 
@@ -175,7 +187,7 @@ There are a few suggested next steps to take the development of our chatbot and 
 
 The topic model was built and tested on the dataset provided. However, as we know the English language is fluid and there are multiple variations in the use of the language, it would be helpful to release the chatbot as a trial to collect real time customer input to test its response and accuracy. User testing will also enable WWF to understand what the chatbot may potentially struggle to understand and respond appropriately, e.g. certain languages, dialects, abbreviations, etc. so as to incorporate these considerations into the further development of the chatbot.
 
-**2. Integrating the chatbot and model with different messaging platforms to reach a wider audience**
+**2. Integrate the chatbot and model with different messaging platforms to reach a wider audience**
 
 We understand WWF is also on social media platforms like Facebook and Instagram where there are messaging platforms attached. Integrating the chatbot to these platforms enables WWF to solve customer enquiries not only with its official website but on multiple channels. This allows WWF to reach a wider span of audience and further enhance their customer service quality.
 
@@ -189,14 +201,14 @@ To continuously build the chatbot’s knowledge base, it will be useful to conne
 
 ## Risk Considerations
 **1. Data privacy**:
-The chatbot may collect user data such as personal information or location, either on purpose or by accident, depending on the customer query and input. WWF will need a secure database to store these data to ensure they are encrypted and properly stored. Irrelevant personal information should be erased from the database. 
+Data leak and/or data breach caused by malicious attacks or human mistakes are possible. WWF will need a secure database to store these data to ensure they are encrypted and properly stored. Irrelevant personal information should be erased from the database. 
 
 **2. Chatbot response accuracy:**
-As the chatbot requires and depends on learning from the knowledge base to provide its responses, its accuracy is highly dependent on the quality and completeness of the information provided to it. There is a risk of the chatbot providing inaccurate information or inappropriate responses if the data collected is not monitored, reviewed and cleaned. Inaccurate or inappropriate responses could lead to misunderstandings and confusion, harm the brand reputation. 
+As the chatbot requires and depends on learning from the knowledge base to provide its responses, its accuracy is highly dependent on the quality and completeness of the information provided to it. There is a risk of the chatbot providing inaccurate information or inappropriate responses if the data collected is not monitored, reviewed and cleaned. Inaccurate or inappropriate responses could lead to misunderstandings and confusion, harm the brand reputation. A possible solution to this would be adding a troubleshoot option in the chatbot to inform the IT team promptly.
 
 **3. Limited Ability to Handle Complex Situations:**
-Chatbots may have difficulty dealing with complex customer queries or issues that require human intervention and problem-solving skills.
+Chatbots may have difficulty dealing with complex customer queries or issues that require human intervention and problem-solving skills. Similar to point 2, thsi could be solved by adding a "chat with customer service representative" button in the chatbot for customer service staff to take on the queries. 
 
-**4. Maintenance and Updates:**
-Chatbots require regular maintenance and updates to ensure they continue to function properly and provide accurate responses. Failure to do so can lead to a breakdown in the system and a negative impact on the customer experience.
+**4. Change management:**
+Chatbots require regular maintenance and updates to ensure they continue to function properly and provide accurate responses. Failure to do so can lead to a breakdown in the system and a negative impact on the customer experience. Another consideration is that inconsistencies/descrepancies could exist between frontend and backend. or issues from API, throughout the maintenance process, which may cause infunctionality. 
 
