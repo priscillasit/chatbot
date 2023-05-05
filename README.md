@@ -5,6 +5,7 @@
 # WILD - Developing a Chatbot
 
 As Business Analytics students from The George Washington University, our project involves building a chatbot and text analytics model for our client, the World Wildlife Fund.  
+
 Team members: Pedro Chames Carvalho, Ke Chai, Varsha Katam, Hao Ren, Priscilla Sit, Alejandra Taboada 
 
 <!-- TABLE OF CONTENTS -->
@@ -20,16 +21,16 @@ Team members: Pedro Chames Carvalho, Ke Chai, Varsha Katam, Hao Ren, Priscilla S
 
 ## Executive Summary
 
-Our project aimed to develop an interactive chatbot platform for WWF that leverages natural language processing (NLP) and machine learning (ML) algorithms to streamline customer query resolution and reduce the workload of the Customer Service team. By mapping customer queries to one of ten possible topics and providing accurate solutions quickly, the platform enhances customer service and satisfaction for WWF.
 
-In our research, we identified extended wait times, inaccurate query resolution, and difficulty navigating the website as WWF’s key challenges. To address these issues, we developed the chatbot platform that can answer customer queries with high accuracy and includes a live scoring mechanism to provide feedback on the accuracy of queries.
+The goal of our initiative was to create an interactive chatbot platform for World Wildlife Fund that utilizes natural language processing (NLP) and machine learning (ML) algorithms to streamline customer inquiries and ease the burden on the Customer Service team. Our project achieves this by accurately mapping customer queries to one of ten possible topics and providing swift categorisation, which will aid in improved customer service and satisfaction.
 
+Our research revealed that extended wait times, inaccurate query resolution, and website navigation difficulties were the primary challenges faced by WWF. To demonstrate the effectiveness of our topic extraction approach, we created a chatbot that accurately categorizes customer queries into the top ten recurring topics.
 
 ## Problem Understanding
 
-WWF needed a comprehensive solution to improve their customer query resolution process and ease the workload of their Customer Service team. We developed a chatbot and a text analytics model that could accurately forecast customer queries and display their accuracy percentage. WWF faced significant challenges in managing customer queries and resolving issues in a timely manner due to the reliance on phone and email support. This approach made it difficult to identify recurring queries and pain points of customers, resulting in dissatisfaction and frustration.  
+WWF needed a comprehensive solution to improve their customer query resolution process and ease the workload of their Customer Service team. We developed a chatbot and a text analytics model that could accurately forecast customer queries by displaying their group. WWF faced significant challenges in managing customer queries and resolving issues in a timely manner due to the reliance on phone and email support. This approach made it difficult to identify recurring queries and pain points of customers, resulting in dissatisfaction and frustration.  
 
-The objective of the project was to build an interactive chatbot platform that reduces the number of recurring queries and provides valuable insights into customer needs and preferences. The identified pain points included extended wait times, inaccurate query resolution, and difficulties in navigating the website. Addressing these issues could enhance customer satisfaction and loyalty, leading to an improvement in WWF's overall reputation.
+The objective of the project was to build an interactive chatbot platform that reduces the number of recurring queries and provides valuable insights into customer needs and preferences. Addressing these issues could enhance customer satisfaction and loyalty, leading to an improvement in WWF's overall reputation.
 
 ## Data Collection and Pre-processing
 
@@ -39,11 +40,11 @@ Data Cleaning: We used Python to clean the data, ensuring it was consistent, rel
 
 **2. Topic Extraction:**   
 After cleaning the data, we used SAS Enterprise Miner to identify the top 25 topics in the dataset. These topics formed the basis for developing the interactive chatbot platform. We are continuously refining the topic extraction process to improve the quality of the topics identified. The top five significant areas we identified include   
-1. Cancel monthly donation 
+1. Cancel monthly donation
 2. Order status
 3. Cancel membership payment
 4. Monthly payment status
-5. Remove from mailing list  
+5. Remove customer mailing list
 
 **3. Data Pre-processing:**  
 We pre-processed the data by tokenizing sentences into individual words, performing lemmatization, and removing stop words. This transformed the raw text data into a more structured format suitable for analysis.
@@ -62,23 +63,29 @@ We then proceeded to create the Text Analytics model. We want to create model th
 
 After topic extraction and matching our collected 25 topics with the 10 general ones given by the client, we compared a neural network, decision tree, and regression model to see which would more reliably predict the topic of a customer inquiry based on its contents. Out of those three, regression was the most accurate model, featuring a KS-statistic of 0.133 and a KS probability cutoff of 0.295.
 
-The text analytics model also uses live scoring to identify the topic of a customer inquiry. The full documentation of the model and the live scoring results can be found in the Appendix. Full integration of the text analytics model into the chatbot is a work in progress.
+![0af12daaf2fbd84b95832d344ba6025f](https://user-images.githubusercontent.com/131799834/236341133-65181bef-0774-4e8e-836b-9b529298ca70.png)
+
+The text analytics model uses the Score node to identify the topic of a customer inquiry. The results are displayed above.
+
+As an example, TextTopic4 includes the combination of keywords "donor+refund+description". When the model identifies it in an inquiry, it has a 22.22% chance of it being labeled as Benefit Update, Benefit Issue, or Member Inquiry. In the case of a tie, it breaks the tie by assigning the one of the most probable Groups.
+
+The full documentation of the model and the scoring results can be found in the Appendix.
 
 ## The Chatbot
 ### Technologies Used For Chatbot   
 
 <img src="https://user-images.githubusercontent.com/111586468/234165654-b69db93d-b3af-4a57-b831-a4a254fc668c.JPG" width="100"> <img src="https://user-images.githubusercontent.com/111586468/234165920-1ed5b7ed-bc11-40c9-a2ab-7361a5b050ac.JPG" width="100"> <img src="https://user-images.githubusercontent.com/111586468/234166076-f3e1a5d8-788b-46fb-bc04-7aa7c8a260f1.JPG" width="100"> <img src="https://user-images.githubusercontent.com/111586468/234166189-98c28951-7cdc-4f81-8d90-3c3d19973ea2.JPG" width="100">   
 
-1. **Webstorm Integrated Development Environment (IDE)**.   
-2. **Node JS framework**, which is an open-source framework that allows developers to build scalable and high-performance applications using JavaScript.   
-3. **NPM (Node Package Manager)** to manage and install all the dependencies required for our chatbot.  
-4. **JavaScript** with the **ReactJS** library, which is a popular front-end development library that provides a component-based approach to building user interfaces.   
-5. Customized and configured the **react-chatbot-kit**, which is an open-source library that provides a framework for building chatbots using ReactJS. This allowed us to build a chatbot platform that was both user-friendly and effective in resolving customer queries.  
+1. **[Webstorm Integrated Development Environment (IDE)](https://www.jetbrains.com/webstorm/)**.   
+2. **[Node JS framework](https://nodejs.org/en)**, which is an open-source framework that allows developers to build scalable and high-performance applications using JavaScript.   
+3. **[NPM (Node Package Manager)](https://www.npmjs.com/)** to manage and install all the dependencies required for our chatbot.  
+4. **JavaScript** with the **[ReactJS](https://react.dev/)** library, which is a popular front-end development library that provides a component-based approach to building user interfaces.   
+5. Customized and configured the **[react-chatbot-kit](https://fredrikoseberg.github.io/react-chatbot-kit-docs/)**, which is an open-source library that provides a framework for building chatbots using ReactJS. This allowed us to build a chatbot platform that was both user-friendly and effective in resolving customer queries.  
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-1. Go to the official Node.js website at https://nodejs.org/en/
+1. Go to the official Node.js [website](https://nodejs.org/en/)
 2. Select the appropriate installer for your operating system (Windows, macOS, or Linux) and download it.
 4. Once the installer has finished downloading, run it and follow the on-screen instructions to install Node.js.
 5. After the installation is complete, open a terminal or command prompt and type "node -v" to verify that Node.js has been installed correctly. You should see the version number of Node.js printed to the console.
@@ -177,7 +184,10 @@ To start the interactive chatbot, simply run $ npm start. This will open the dev
 | (update OR remove OR (take AND off)) AND mail | Hi. We very much appreciate the work you're doing, and we do donate. Would you please take us off the paper mailing list in order to save paper | Change Solicitation Preferences  | 
 | cancel AND (subscription OR membership or donation)  | Hi, I need to cancel my membership at this time. I am currently donating $15/month.Please advise me when this is done  | Sustainer Request  |
 | renew  | I sent a membership renewal on the 17th, the wwf website hungup at the end of transaction. I am not sure if it went through. Can you help?  | Renewal Issue  |
-| (receive OR send OR forward) AND (mail OR receipt OR invoice OR order)  | Please forward a copy of invoice with mailing address to wjmacneill@gmail.  | Mailed Info |
+| (receive OR send OR forward) AND (mail OR receipt OR invoice OR address)  | Please forward a copy of invoice with mailing address to example@gmail.  | Mailed Info |
+| member OR contribution  | I purchased membership a while ago for my two young sons and they requested the socks but never received them.  It has been a long time and they are now disappointed as if their membership doesn't count. How can I correct this?  | Member Inquiry  |
+| ((update OR incorrect OR status) AND (order OR address OR mail)) |  I recently ordered this but the mailing address is incorrect. The correct mailing address is 123 Example St  | Benefit Update  |
+| (not received OR never received) AND (order OR mail OR receipt)  | Hello, i still have not received my gift bag and i ordered it before christmas. just wondering what is taking so long  | Benefit Issue  |
 
 ## Recommended Next Steps
 
@@ -187,15 +197,19 @@ There are a few suggested next steps to take the development of our chatbot and 
 
 The topic model was built and tested on the dataset provided. However, as we know the English language is fluid and there are multiple variations in the use of the language, it would be helpful to release the chatbot as a trial to collect real time customer input to test its response and accuracy. User testing will also enable WWF to understand what the chatbot may potentially struggle to understand and respond appropriately, e.g. certain languages, dialects, abbreviations, etc. so as to incorporate these considerations into the further development of the chatbot.
 
-**2. Integrate the chatbot and model with different messaging platforms to reach a wider audience**
+**2. Integrate chatbot with text analytics model**
+
+To take the chatbot development to the next phase, it is suggested to connect the text analytics model to the chatbot for it to provide live scoring. 
+
+**3. Integrate with different messaging platforms to reach a wider audience**
 
 We understand WWF is also on social media platforms like Facebook and Instagram where there are messaging platforms attached. Integrating the chatbot to these platforms enables WWF to solve customer enquiries not only with its official website but on multiple channels. This allows WWF to reach a wider span of audience and further enhance their customer service quality.
 
-**3. Add more features to the chatbot to enhance user experience**
+**4. Add more features to the chatbot to enhance user experience**
 
 In addition to text messages, customers could record voice messages on their enquiries. This would leverage voice recognition and natural language processing in the model’s further development. Also, the use of emojis are not uncommon nowadays and WWF can utilize that for sentiment analysis. It can be useful to distinguish positive and negative comments from customers to cater to their immediate needs and for the chatbot to react more appropriately if negative sentiments are detected. 
  
-**4. Connect the chatbot to WWF’s database**
+**5. Connect the chatbot to WWF’s database**
 
 To continuously build the chatbot’s knowledge base, it will be useful to connect the chatbot to WWF’s database and store all incoming customer enquiries there. This practice will not only apply to the chatbot but all customer enquiries from various existing customer service channels, e.g. email, phone, etc.. This will support the model’s continuous learning to better automate responses based on accurate and up-to-date information. 
 
